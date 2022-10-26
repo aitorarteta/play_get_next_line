@@ -6,7 +6,7 @@
 /*   By: aarteta <aarteta@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:43:08 by aarteta           #+#    #+#             */
-/*   Updated: 2022/10/13 22:09:47 by aarteta          ###   ########.fr       */
+/*   Updated: 2022/10/26 19:34:13 by aarteta          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ int	ft_strlen(const char *str)
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	dst;
+	char	*dst;
 
 	if(!s)
 		return (0);
 	dst = (char *)malloc(sizeof(char) * len + 1);
 	if (!dst)
 		return (NULL);
-	ft_strlcopy(dst, s + start, len + 1);
+	ft_strlcpy(dst, s + start, len + 1);
 	return (dst);
 }
 
@@ -85,7 +85,7 @@ char	*ft_strjoin(char *s1, char const *s2)
 	dst = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!dst)
 		return (NULL);
-	strlcpy(dst, s1, ft_strlen(s1) + 1);
+	ft_strlcpy(dst, s1, ft_strlen(s1) + 1);
 	ft_strlcat(dst, s2, ft_strlen(s1) + ft_strlen(s2) + 1);
 	return (dst);
 }

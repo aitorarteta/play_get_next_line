@@ -6,7 +6,7 @@
 /*   By: aarteta <aarteta@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:43:06 by aarteta           #+#    #+#             */
-/*   Updated: 2022/10/13 23:00:36 by aarteta          ###   ########.fr       */
+/*   Updated: 2022/10/26 21:28:43 by aarteta          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define GET_NEXT_LINE_H
 
 # include <unistd.h>// for size_t
+# include <stdlib.h> // for malloc
 # include <stdio.h> // is it allowed in this project?
 # include <fcntl.h> // for O_RDONLY
 
