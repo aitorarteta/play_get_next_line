@@ -6,28 +6,24 @@
 /*   By: aarteta <aarteta@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:43:12 by aarteta           #+#    #+#             */
-/*   Updated: 2022/10/26 21:42:39 by aarteta          ###   ########.fr       */
+/*   Updated: 2022/10/27 23:31:39 by aarteta          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 #include "get_next_line.h"
 
-int	main()
+/* int	main()
 {
 	int 	fd;
-	char *file;
+	//char *file;
 	char *line;
 
 	//Declare file
-	file = "text.txt";
-
+	//file = "text.txt";
+	printf("Inicio main\n");
 	//Open & Read file
-	fd = open(file, O_RDONLY);
+	fd = open("text.txt", O_RDONLY);
+	printf("fd: %i\n", fd);
 
 	//Read & Print 1 line
 	line = get_next_line(fd);
@@ -40,5 +36,25 @@ int	main()
 	//Read & Print 3 line
 	line = get_next_line(fd);
 	printf("3:%s\n", line);
+	return (0);
+}*/
+
+int main()
+{
+	int		fd;
+	char	*line;
+
+	printf("Init Main\n");
+
+	fd = open("text.txt", O_RDONLY);
+	printf("Main_fd is:%i\n", fd);
+	line = get_next_line(fd);
+	printf("1:%s\n", line);
+	line = get_next_line(fd);
+	printf("2:%s\n", line);
+	line = get_next_line(fd);
+	printf("3:%s\n", line);
+	line = get_next_line(fd);
+	printf("4:%s\n", line);
 	return (0);
 }

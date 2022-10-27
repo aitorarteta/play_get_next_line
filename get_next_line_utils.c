@@ -6,7 +6,7 @@
 /*   By: aarteta <aarteta@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:43:08 by aarteta           #+#    #+#             */
-/*   Updated: 2022/10/26 19:34:13 by aarteta          ###   ########.fr       */
+/*   Updated: 2022/10/27 22:27:27 by aarteta          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ int	ft_strlen(const char *str)
 	int	i;
 
 	i = 0;
-	while (str);
-	i++;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	printf("strlen_str is:%i\n", i);
 	return (i);
 }
 
@@ -28,7 +31,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if(!s)
 		return (0);
-	dst = (char *)malloc(sizeof(char) * len + 1);
+	dst = (char *)malloc(sizeof(char) * (len + 1));
 	if (!dst)
 		return (NULL);
 	ft_strlcpy(dst, s + start, len + 1);
@@ -72,20 +75,66 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	return (dst_len + src_len);
 }
 
-char	*ft_strjoin(char *s1, char const *s2)
+char	*ft_strjoin(char *s1, const char *s2)
 {
-	char *dst;
+	int		i;
+	int		j;
+	char	*str;
 
-	if (!s1 && ! s2)
-		return (0);
-	if (!s2)
-		return (s1);
-	if (!s1)
-		return ((char *)s2);
-	dst = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!dst)
+	i = 0;
+	j = 0;
+	printf("\nstrljoin_i is:%i\n", i);
+	printf("strljoin_j is:%i\n", j);
+	printf("strljoin_s1 is:%s\n", s1);
+	printf("strljoin_s2 is:%s\n", s2);
+
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	printf("strljoin_str after malloc is:%s\n", str);
+
+	if (str == NULL)
 		return (NULL);
-	ft_strlcpy(dst, s1, ft_strlen(s1) + 1);
-	ft_strlcat(dst, s2, ft_strlen(s1) + ft_strlen(s2) + 1);
-	return (dst);
+	while (s1[i] != '\0')
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	while (s2[j] != '\0')
+	{
+		str[i + j] = s2[j];
+		j++;
+	}
+	str[i + j] = '\0';
+	printf("strljoin_str after join is:%s\n", str);
+	return (str);
+}
+
+char *ft_strdup(const char *s1)
+{
+	char	*dest;
+	size_t	i;
+
+	dest = (char *)malloc(sizeof(ft_strlen(s1) + 1));
+	if (!dest)
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		dest[i] = s1[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
+char	*ft_strchr(const char *s, int i)
+{
+	while (*s)
+	{
+		if (*s == i)
+			return ((char *)s);
+		s++;
+	}
+	if (i == '\0')
+		return ((char *)s);
+	return (0);
 }
