@@ -6,7 +6,7 @@
 /*   By: aarteta <aarteta@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:43:12 by aarteta           #+#    #+#             */
-/*   Updated: 2022/10/27 23:31:39 by aarteta          ###   ########.fr       */
+/*   Updated: 2022/11/03 18:47:36 by aarteta          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,16 @@ int main()
 
 	printf("Init Main\n");
 
-	fd = open("text.txt", O_RDONLY);
+ 	fd = open("text.txt", O_RDONLY);
 	printf("Main_fd is:%i\n", fd);
 	line = get_next_line(fd);
 	printf("1:%s\n", line);
-	line = get_next_line(fd);
+/*	line = get_next_line(fd);
 	printf("2:%s\n", line);
 	line = get_next_line(fd);
 	printf("3:%s\n", line);
 	line = get_next_line(fd);
 	printf("4:%s\n", line);
-	return (0);
+	return (0); */
 }
+

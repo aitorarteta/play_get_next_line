@@ -6,7 +6,7 @@
 /*   By: aarteta <aarteta@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:43:08 by aarteta           #+#    #+#             */
-/*   Updated: 2022/10/27 22:27:27 by aarteta          ###   ########.fr       */
+/*   Updated: 2022/11/03 20:39:24 by aarteta          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	ft_strlen(const char *str)
 	{
 		i++;
 	}
-	printf("strlen_str is:%i\n", i);
 	return (i);
 }
 
@@ -29,7 +28,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*dst;
 
-	if(!s)
+	if (!s)
 		return (0);
 	dst = (char *)malloc(sizeof(char) * (len + 1));
 	if (!dst)
@@ -55,26 +54,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return ((int)ft_strlen(src));
 }
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
-{
-	size_t	dst_len;
-	size_t	src_len;
-
-	dst_len = ft_strlen(dst);
-	src_len = ft_strlen(src);
-	if(dst_len >= dstsize)
-	{
-		return ( dstsize + src_len);
-	}
-	dstsize -= dst_len;
-	while (*src && dstsize --> 1)
-		{
-			*(dst++ + dst_len) = *src++;
-		}
-	*(dst + dst_len) = '\0';
-	return (dst_len + src_len);
-}
-
 char	*ft_strjoin(char *s1, const char *s2)
 {
 	int		i;
@@ -83,14 +62,7 @@ char	*ft_strjoin(char *s1, const char *s2)
 
 	i = 0;
 	j = 0;
-	printf("\nstrljoin_i is:%i\n", i);
-	printf("strljoin_j is:%i\n", j);
-	printf("strljoin_s1 is:%s\n", s1);
-	printf("strljoin_s2 is:%s\n", s2);
-
 	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	printf("strljoin_str after malloc is:%s\n", str);
-
 	if (str == NULL)
 		return (NULL);
 	while (s1[i] != '\0')
@@ -104,11 +76,10 @@ char	*ft_strjoin(char *s1, const char *s2)
 		j++;
 	}
 	str[i + j] = '\0';
-	printf("strljoin_str after join is:%s\n", str);
 	return (str);
 }
 
-char *ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
 	char	*dest;
 	size_t	i;
@@ -124,17 +95,4 @@ char *ft_strdup(const char *s1)
 	}
 	dest[i] = '\0';
 	return (dest);
-}
-
-char	*ft_strchr(const char *s, int i)
-{
-	while (*s)
-	{
-		if (*s == i)
-			return ((char *)s);
-		s++;
-	}
-	if (i == '\0')
-		return ((char *)s);
-	return (0);
 }
