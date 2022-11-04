@@ -6,7 +6,7 @@
 /*   By: aarteta <aarteta@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:43:08 by aarteta           #+#    #+#             */
-/*   Updated: 2022/11/03 20:39:24 by aarteta          ###   ########.fr       */
+/*   Updated: 2022/11/04 19:26:46 by aarteta          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*dst;
 
+	printf("\nsubstr_len is: %zu\n", len);
 	if (!s)
 		return (0);
 	dst = (char *)malloc(sizeof(char) * (len + 1));
 	if (!dst)
 		return (NULL);
 	ft_strlcpy(dst, s + start, len + 1);
+	printf("substr_backup is: %s\n", dst);
 	return (dst);
 }
 

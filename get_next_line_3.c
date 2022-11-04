@@ -6,11 +6,24 @@
 /*   By: aarteta <aarteta@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 21:09:02 by aarteta           #+#    #+#             */
-/*   Updated: 2022/10/27 23:31:17 by aarteta          ###   ########.fr       */
+/*   Updated: 2022/11/04 19:26:39 by aarteta          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char	*ft_strchr(const char *s, int i)
+{
+	while (*s)
+	{
+		if (*s == i)
+			return ((char *)s);
+		s++;
+	}
+	if (i == '\0')
+		return ((char *)s);
+	return (0);
+}
 
  static char	*function_name(int fd, char *buf, char *backup)
 {
@@ -55,17 +68,22 @@
 	char	*backup;
 
 	count = 0;
-	while (line[count] != '\n' && line[count] != '\0')
+	printf("\nextr_line is: %s\n", line);
+
+	while (line[count] != '\n' && line[count])
 		count++;
-	if (line[count] == '\0' || line[1] == '\0')
+	printf("extr_will count is: %zu\n", count);
+	if (line[count] == '\0')
 		return (0);
 	backup = ft_substr(line, count + 1, ft_strlen(line) - count);
+	printf("extr_backup is: %s\n\n", backup);
 	if (*backup == '\0')
 	{
 		free(backup);
 		backup = NULL;
 	}
 	line[count + 1] = '\0';
+	printf("extr_line is: %s\n", line);
 	return (backup);
 }
 
@@ -93,6 +111,7 @@ char	*get_next_line(int fd)
 	buf = NULL;
 	if (!line)
 		return (NULL);
+	printf("gnl_line pre-extract is:%s\n", line);
 	backup = extract(line);
 	return (line);
 }

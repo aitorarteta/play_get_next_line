@@ -6,7 +6,7 @@
 /*   By: aarteta <aarteta@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 21:09:02 by aarteta           #+#    #+#             */
-/*   Updated: 2022/11/03 21:26:47 by aarteta          ###   ########.fr       */
+/*   Updated: 2022/11/04 20:14:01 by aarteta          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,21 @@ static char	*function_name(int fd, char *buf, char *backup)
 
 static char	*extract(char *line)
 {
-	size_t	count;
+	size_t	i;
 	char	*backup;
 
-	count = 0;
-	while (line[count] != '\n' && line[count] != '\0')
-		count++;
-	if (line[count] == '\0' || line[1] == '\0')
+	i = 0;
+	while (line[i] != '\n' && line[i] != '\0')
+		i++;
+	if (line[i] == '\0')
 		return (0);
-	backup = ft_substr(line, count + 1, ft_strlen(line) - count);
+	backup = ft_substr(line, i + 1, ft_strlen(line) - i);
 	if (*backup == '\0')
 	{
 		free(backup);
 		backup = NULL;
 	}
-	line[count + 1] = '\0';
+	line[i + 1] = '\0';
 	return (backup);
 }
 
@@ -77,11 +77,11 @@ char	*get_next_line(int fd)
 	char		*buf;
 	static char	*backup;
 
-	if (fd <= 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
-		return ("null");
+		return (NULL);
 	line = function_name(fd, buf, backup);
 	if (!line)
 	{
@@ -94,5 +94,7 @@ char	*get_next_line(int fd)
 	if (!line)
 		return (NULL);
 	backup = extract(line);
+	if (!line)
+		return (NULL);
 	return (line);
 }

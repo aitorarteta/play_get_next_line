@@ -6,7 +6,7 @@
 /*   By: aarteta <aarteta@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:43:12 by aarteta           #+#    #+#             */
-/*   Updated: 2022/11/03 18:47:36 by aarteta          ###   ########.fr       */
+/*   Updated: 2022/11/04 18:11:51 by aarteta          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ int main()
 	printf("Main_fd is:%i\n", fd);
 	line = get_next_line(fd);
 	printf("1:%s\n", line);
-/*	line = get_next_line(fd);
+	line = get_next_line(fd);
 	printf("2:%s\n", line);
 	line = get_next_line(fd);
 	printf("3:%s\n", line);
 	line = get_next_line(fd);
 	printf("4:%s\n", line);
-	return (0); */
+	return (0);
 }
 
